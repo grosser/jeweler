@@ -10,8 +10,6 @@ class Jeweler
           setup do
             stub(@command).clean_staging_area? { true }
 
-            stub(@repo).checkout(anything)
-
             stub(@command).regenerate_gemspec!
 
             stub(@command).gemspec_changed? { true }
@@ -24,9 +22,10 @@ class Jeweler
             @command.run
           end
 
-          should "checkout master" do
-            assert_received(@repo) {|repo| repo.checkout('master') }
-          end
+          # TODO whats the opposite of assert_received ?
+          #should "stay on current branch" do
+          #  assert_received(@repo) {|repo| repo.checkout }
+          #end
 
           should "regenerate gemspec" do
             assert_received(@command) {|command| command.regenerate_gemspec! }
@@ -64,8 +63,6 @@ class Jeweler
           setup do
             stub(@command).clean_staging_area? { true }
 
-            stub(@repo).checkout(anything)
-
             stub(@command).regenerate_gemspec!
 
             stub(@command).gemspec_changed? { false }
@@ -78,9 +75,10 @@ class Jeweler
             @command.run
           end
 
-          should "checkout master" do
-            assert_received(@repo) {|repo| repo.checkout('master') }
-          end
+          # TODO whats the opposite of assert_received ?
+          #should "stay on current branch" do
+          #  assert_received(@repo) {|repo| repo.checkout }
+          #end
 
           should "regenerate gemspec" do
             assert_received(@command) {|command| command.regenerate_gemspec! }
@@ -96,8 +94,6 @@ class Jeweler
           setup do
             stub(@command).clean_staging_area? { true }
 
-            stub(@repo).checkout(anything)
-
             stub(@command).regenerate_gemspec!
 
             stub(@command).gemspec_changed? { true }
@@ -110,9 +106,10 @@ class Jeweler
             @command.run
           end
 
-          should "checkout master" do
-            assert_received(@repo) {|repo| repo.checkout('master') }
-          end
+          # TODO whats the opposite of assert_received ?
+          #should "stay on current branch" do
+          #  assert_received(@repo) {|repo| repo.checkout }
+          #end
 
           should "regenerate gemspec" do
             assert_received(@command) {|command| command.regenerate_gemspec! }

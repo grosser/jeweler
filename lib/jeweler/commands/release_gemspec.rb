@@ -19,12 +19,10 @@ class Jeweler
           raise "Unclean staging area! Be sure to commit or .gitignore everything first. See `git status` above."
         end
 
-        repo.checkout('master')
-
         regenerate_gemspec!
         commit_gemspec! if gemspec_changed?
 
-        output.puts "Pushing master to origin"
+        output.puts "Pushing current branch to origin"
         repo.push
       end
 
